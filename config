@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+export SPHINX_IMAGE=${SPHINX_IMAGE:="sphinx"}
+export SPHINX_IMAGE_VERSION=${SPHINX_IMAGE_VERSION:="0.0.1"}
+export SPHINX_ROOT=${SPHINX_ROOT:="/var/lib/dokku/services/sphinx"}
+
+export PLUGIN_COMMAND_PREFIX="searchd"
+export PLUGIN_DATA_ROOT=$SPHINX_ROOT
+export PLUGIN_DATASTORE_PORTS=(6379)
+export PLUGIN_DEFAULT_ALIAS="SPHINX"
+export PLUGIN_ALT_ALIAS="DOKKU_SPHINX"
+export PLUGIN_IMAGE=$SPHINX_IMAGE
+export PLUGIN_IMAGE_VERSION=$SPHINX_IMAGE_VERSION
+export PLUGIN_SCHEME="sphinx"
+export PLUGIN_SERVICE="Sphinx"
+export PLUGIN_BASE_PATH="$PLUGIN_PATH"
+if [[ -n $DOKKU_API_VERSION ]]; then
+  export PLUGIN_BASE_PATH="$PLUGIN_ENABLED_PATH"
+fi
+
+if [[ -d "$PLUGIN_DATA_ROOT/*" ]]; then
+  rm -rf "${PLUGIN_DATA_ROOT:?}/*"
+fi
