@@ -367,7 +367,7 @@ service_create_container() {
   local SERVICE_ROOT="$PLUGIN_DATA_ROOT/$SERVICE"
   local SERVICE_NAME="$(get_service_name "$SERVICE")"
 
-  ID=$(docker run --name "$SERVICE_NAME" -v "$SERVICE_ROOT/data:/data" -v "$SERVICE_ROOT/config:/config" --env-file="$SERVICE_ROOT/ENV" -d --restart always --label dokku=service --label dokku.service=sphinx "$PLUGIN_IMAGE:$PLUGIN_IMAGE_VERSION" searchd.sh --config /var/lib/dokku/data/storage/staging.sphinx.conf)
+  ID=$(docker run --name "$SERVICE_NAME" -v "$SERVICE_ROOT/config:/config" --env-file="$SERVICE_ROOT/ENV" -d --restart always --label dokku=service --label dokku.service=sphinx "$PLUGIN_IMAGE:$PLUGIN_IMAGE_VERSION" searchd.sh)
   echo "$ID" > "$SERVICE_ROOT/ID"
 
   dokku_log_verbose_quiet "Waiting for container to be ready"
