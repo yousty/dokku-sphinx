@@ -8,7 +8,7 @@
 
 ```shell
 # on 0.4.x+
-dokku plugin:install https://github.com/yosty/dokku-sphinx.git sphinx
+dokku plugin:install https://github.com/yousty/dokku-sphinx.git sphinx
 ```
 
 ## commands
