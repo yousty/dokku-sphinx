@@ -11,13 +11,13 @@ if [[ ! -d $PLUGIN_DATA_ROOT ]]; then
 fi
 
 case "$1" in
-  $PLUGIN_COMMAND_PREFIX:clone)
-    "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/clone" "$@"
-    ;;
-
-  $PLUGIN_COMMAND_PREFIX:connect)
-    "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/connect" "$@"
-    ;;
+  # $PLUGIN_COMMAND_PREFIX:clone)
+  #   "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/clone" "$@"
+  #   ;;
+  #
+  # $PLUGIN_COMMAND_PREFIX:connect)
+  #   "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/connect" "$@"
+  #   ;;
 
   $PLUGIN_COMMAND_PREFIX:create)
     "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/create" "$@"
@@ -27,17 +27,17 @@ case "$1" in
     "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/destroy" "$@"
     ;;
 
-  $PLUGIN_COMMAND_PREFIX:export)
-    "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/export" "$@"
-    ;;
+  # $PLUGIN_COMMAND_PREFIX:export)
+  #   "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/export" "$@"
+  #   ;;
 
   $PLUGIN_COMMAND_PREFIX:expose)
     "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/expose" "$@"
     ;;
 
-  $PLUGIN_COMMAND_PREFIX:import)
-    "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/import" "$@"
-    ;;
+  # $PLUGIN_COMMAND_PREFIX:import)
+  #   "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/import" "$@"
+  #   ;;
 
   $PLUGIN_COMMAND_PREFIX:info)
     "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/subcommands/info" "$@"
