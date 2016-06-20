@@ -11,6 +11,8 @@
 dokku plugin:install https://github.com/yousty/dokku-sphinx.git sphinx
 ```
 
+Plugin requires a directory to write to (default `/var/lib/dokku/services/sphinx`) and a volume to read configuration from (default `/var/lib/dokku/data/storage`)
+
 ## commands
 
 ```
@@ -27,4 +29,44 @@ sphinx:start <name>             Start a previously stopped sphinx service
 sphinx:stop <name>              Stop a running sphinx service
 sphinx:unexpose <name>          Unexpose a previously exposed sphinx service
 sphinx:unlink <name> <app>      Unlink the sphinx service from the app
+```
+
+## usage
+
+**Important!**
+Make sure to include listen ports listed below in your sphinx.conf:
+```
+searchd {
+  ...
+  listen = 9312
+  listen = 127.0.0.1:9306:mysql41
+  ...
+}
+```
+
+```shell
+# create a sphinx service named foo
+dokku sphinx:create foo
+
+# you can also specify the image and image
+# version to use for the service
+# it *must* be compatible with the
+# leodido/sphinxsearch image
+export SPHINX_IMAGE="leodido/sphinxsearch"
+export SPHINX_IMAGE_VERSION="2.2.10"
+
+# you can also specify custom environment
+# variables to start the sphinx service
+# in semi-colon separated form
+export SPHINX_CUSTOM_ENV="USER=alpha;HOST=beta"
+
+# get connection information as follows
+dokku sphinx:info foo
+
+# a sphinx service can be linked to a
+# container this will use native docker
+# links via the docker-options plugin
+# here we link it to our 'bar' app
+# NOTE: this will restart your app
+dokku sphinx:link foo bar
 ```
