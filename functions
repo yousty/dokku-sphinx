@@ -168,7 +168,10 @@ service_link() {
   # shellcheck disable=SC2034
   local passed_phases=(build deploy run)
   add_passed_docker_option passed_phases[@] "--link $SERVICE_NAME:$SERVICE_ALIAS"
-  config_set "$APP" "${ALIAS}_URL=$SERVICE_URL ${ALIAS}_HOST=$SERVICE_ALIAS ${ALIAS}_URL=${PLUGIN_DATASTORE_PORTS[0]}"
+
+  config_set --no-restart "$APP" "${ALIAS}_HOST=$SERVICE_ALIAS"
+  config_set --no-restart "$APP" "${ALIAS}_PORT=${PLUGIN_DATASTORE_PORTS[0]}"
+  config_set "$APP" "${ALIAS}_URL=$SERVICE_URL"
 }
 
 is_container_status() {
