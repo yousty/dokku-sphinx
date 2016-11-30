@@ -169,6 +169,8 @@ service_link() {
   local passed_phases=(build deploy run)
   add_passed_docker_option passed_phases[@] "--link $SERVICE_NAME:$SERVICE_ALIAS"
   config_set "$APP" "${ALIAS}_URL=$SERVICE_URL"
+  config_set "$APP" "${ALIAS}_HOST=$SERVICE_ALIAS"
+  config_set "$APP" "${ALIAS}_URL=${PLUGIN_DATASTORE_PORTS[0]}"
 }
 
 is_container_status() {
