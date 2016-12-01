@@ -28,7 +28,7 @@ teardown() {
 
 @test "($PLUGIN_COMMAND_PREFIX:unlink) error when the service does not exist" {
   run dokku "$PLUGIN_COMMAND_PREFIX:unlink" not_existing_service my_app
-  assert_contains "${lines[*]}" "Redis service not_existing_service does not exist"
+  assert_contains "${lines[*]}" "Sphinx service not_existing_service does not exist"
 }
 
 @test "($PLUGIN_COMMAND_PREFIX:unlink) error when service not linked to app" {
@@ -46,6 +46,6 @@ teardown() {
 @test "($PLUGIN_COMMAND_PREFIX:unlink) unsets config url from app" {
   dokku "$PLUGIN_COMMAND_PREFIX:link" l my_app >&2
   dokku "$PLUGIN_COMMAND_PREFIX:unlink" l my_app
-  config=$(dokku config:get my_app REDIS_URL)
+  config=$(dokku config:get my_app SPHINX_URL)
   assert_equal "$config" ""
 }

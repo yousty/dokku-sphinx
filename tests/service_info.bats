@@ -16,17 +16,17 @@ teardown() {
 
 @test "($PLUGIN_COMMAND_PREFIX:info) error when service does not exist" {
   run dokku "$PLUGIN_COMMAND_PREFIX:info" not_existing_service
-  assert_contains "${lines[*]}" "Redis service not_existing_service does not exist"
+  assert_contains "${lines[*]}" "Sphinx service not_existing_service does not exist"
 }
 
 @test "($PLUGIN_COMMAND_PREFIX:info) success" {
   run dokku "$PLUGIN_COMMAND_PREFIX:info" l
-  assert_contains "${lines[*]}" "DSN: redis://dokku-redis-l:6379"
+  assert_contains "${lines[*]}" "DSN: sphinx://dokku-sphinx-l:9306"
 }
 
 @test "($PLUGIN_COMMAND_PREFIX:info) replaces underscores by dash in hostname" {
   dokku "$PLUGIN_COMMAND_PREFIX:create" test_with_underscores
   run dokku "$PLUGIN_COMMAND_PREFIX:info" test_with_underscores
-  assert_contains "${lines[*]}" "DSN: redis://dokku-redis-test-with-underscores:6379"
+  assert_contains "${lines[*]}" "DSN: sphinx://dokku-sphinx-test-with-underscores:9306"
   dokku --force "$PLUGIN_COMMAND_PREFIX:destroy" test_with_underscores
 }

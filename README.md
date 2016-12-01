@@ -1,4 +1,9 @@
-# dokku sphinx (beta)
+# dokku sphinx (very beta)
+
+Welcome to the site of Dokku Thinking Sphinx plugin.
+Currently the plugin works "as it is" and further work on it will be probably suspended.
+Feel free to ask, patch, provide new functionalities and create pull requests.
+
 ## requirements
 
 - dokku 0.4.x+
@@ -67,3 +72,9 @@ dokku sphinx:info foo
 # NOTE: this will restart your app
 dokku sphinx:link foo bar
 ```
+
+## TODO
+- fix rake tasks (provide pid file maybe?)
+- create interface for stopping/starting the deamon
+- remove volumes if they are not necessary
+- read configuration from config directory (quit using shared)

@@ -16,11 +16,10 @@ teardown() {
 
 @test "($PLUGIN_COMMAND_PREFIX:stop) error when service does not exist" {
   run dokku "$PLUGIN_COMMAND_PREFIX:stop" not_existing_service
-  assert_contains "${lines[*]}" "Redis service not_existing_service does not exist"
+  assert_contains "${lines[*]}" "Sphinx service not_existing_service does not exist"
 }
 
 @test "($PLUGIN_COMMAND_PREFIX:stop) success" {
   run dokku "$PLUGIN_COMMAND_PREFIX:stop" l
   assert_success
 }
-
